@@ -16,15 +16,16 @@ import java.util.Iterator;
 @Service
 public class SpringInterfaceTest implements BeanFactoryPostProcessor {
 
-
     private static Logger log = LoggerFactory.getLogger(SpringInterfaceTest.class);
+    
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
         try{
             Iterator<String> clazzNameIterator = configurableListableBeanFactory .getBeanNamesIterator();
             while (clazzNameIterator.hasNext()){
                 String clazzName = clazzNameIterator.next();
                 System.out.println(clazzName);
-                Class c = Class.forName(clazzName);
+
+                Class c = configurableListableBeanFactory.getBean(clazzName).getClass();
                 Annotation[] annotations = c.getAnnotations();
                 for(Annotation annotation : annotations){
                     System.out.println(annotation + "----");
