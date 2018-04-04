@@ -12,6 +12,7 @@ import java.util.Iterator;
 
 /**
  * Created by wangyu21 on 2018/4/2.
+ * spring 容器加载完成后 立即执行
  */
 @Service
 public class SpringInterfaceTest implements BeanFactoryPostProcessor {
